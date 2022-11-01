@@ -42,19 +42,6 @@
       </ul>
     </div>
     </div >
-
-    <div class="projects">
-      <ul>
-        <li v-for="project in this.projects" :key="project.id">
-          <h3>{{project.title}}</h3>
-          <p>Lorem ipsum dolor sit amet.</p>
-          <div class="social_media">
-            <a v-bind:href="project.twitter"><img src="../assets/logotw.png" alt=""></a>
-            
-          </div>
-        </li>
-      </ul>
-    </div>
    
 </template>
 
@@ -135,7 +122,8 @@ li:hover{
 
 .categories{
   width: 20vw;
-  margin-top: 1em;
+  height: 100vh;
+  margin-top: 1.9em;
 }
 
 .projects{
@@ -150,20 +138,21 @@ button{
   outline: none;
   border: none;
   border-radius: 1px;
-  margin: 0 0 15px 2em;
-  padding: 10px 13px;
+  margin: 0 0 10px 2em;
+  padding: 23px 15px;
   transition: all .3s ease-in-out;
   font-size: 1.2em;
-  font-weight: 500;
-  color: #222324;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #2a2a2ac1;
   /* background-color: #dfdfdf27; */
-  background-color: #00000000;
+  background-color: #dfdfdf27;
   border-radius: 15px;
-  /* box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px; */
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: all .2s ease-in-out;
 }
 button:hover{
-  background-color: #c6c8e732;
+  background-color: #c6c8e7c2;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
