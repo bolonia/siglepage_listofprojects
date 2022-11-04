@@ -22,6 +22,11 @@
     </div>
   </div>
 
+  <div class="nav">
+    <h1>suiecosystem</h1>
+    <!-- <div class="linkBlock">for link in fiture</div> -->
+    <button onclick="location.href = `https://suiecosystem.top/submit-sui-project/`">Submit</button>
+  </div>
   <div class="main">
     <div class="categories">
       <button
@@ -134,6 +139,15 @@ export default {
 </script>
 
 <style >
+.nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: .4em 8vw;
+  box-shadow: rgba(100, 100, 111, 0.5) 0px 7px 29px 0px;
+  backdrop-filter: blur(10px);
+}
 .title {
   display: flex;
   align-items: center;
@@ -191,7 +205,7 @@ li p {
   margin-top: 1em;
 }
 
-.categories button {
+.categories button, .nav button {
   display: block;
   width: 80%;
   text-align: justify;
@@ -211,9 +225,12 @@ li p {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: all 0.2s ease-in-out;
 }
-.categories button:hover {
+.categories button:hover, .nav button:hover {
   background-color: #c6c8e7c2;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.nav button{
+  width: 100px;
 }
 
 .title img {
@@ -272,6 +289,7 @@ body {
   width: 100%;
   height: 100vh;
   z-index: -2;
+  top: 0;
 }
 
 .circles {
@@ -381,7 +399,7 @@ body {
   }
 
   100% {
-    transform: translateY(-1000px) rotate(720deg);
+    transform: translateY(-1100px) rotate(720deg);
     opacity: 0;
     border-radius: 20%;
   }
