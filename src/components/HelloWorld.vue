@@ -59,6 +59,7 @@
         </li>
       </ul>
     </div>
+    <button v-show="this.showScrollBtn" onclick="window.scrollTo(0, 0)" class="scrollToTop"><img src="../assets/double-arrow-top-icon.png" alt=""></button>
   </div>
 </template>
 
@@ -91,10 +92,12 @@ export default {
       scroll: 0,
       arr: [],
       stopLoad: false,
+      showScrollBtn: false
     };
   },
   mounted() {
     window.addEventListener("scroll", () => {
+      window.pageYOffset > 20 ? this.showScrollBtn = true : this.showScrollBtn = false;
       if (document.documentElement.scrollHeight - 20 <= document.documentElement.scrollTop +document.documentElement.clientHeight){
         this.page += 1;
         if (!this.stopLoad) {
@@ -114,7 +117,7 @@ export default {
       .get("https://suiecosystem.top/wp-json/api/get_project_all")
       .then((response) => {
 
-        response.data.forEach(element => element.excerpt = "");
+        response.data.forEach(element => element.excerpt = "Lorem ipsum dolor sit amet consectetur adipisicing elit quidem ipsum repellat est repellendus illo molestias!");
 
         this.projects = response.data;
         this.bg = response.data.slice(0, 10);
@@ -205,7 +208,7 @@ li p {
   margin-top: 1em;
 }
 
-.categories button, .nav button {
+.categories button, .nav button, .scrollToTop{
   display: block;
   width: 80%;
   text-align: justify;
@@ -231,6 +234,26 @@ li p {
 }
 .nav button{
   width: 100px;
+}
+.scrollToTop{
+  position: fixed;
+  width: 2.2em;
+  height: 2.2em;
+  border-radius: 50%;
+  font-size: 2em;
+  padding: 2px 0 0 14px;
+
+  bottom: .5em;
+  right: .8em;
+}
+.scrollToTop img{
+  transition: all 0.2s ease-in-out;
+  width: 1.3em;
+  height: 1.3em;
+  opacity: .2;
+}
+.scrollToTop:hover img{
+  opacity: .5;
 }
 
 .title img {
