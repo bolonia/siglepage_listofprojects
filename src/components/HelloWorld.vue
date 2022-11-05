@@ -11,8 +11,8 @@
             />
             <h3>{{ project.title }}</h3>
           </div>
-          <p>Lorem ipsum dolor sit amet.</p>
-          <div class="social_media">
+          <p>{{ project.excerpt.split(",")[0].split(".")[0] }}</p>
+          <div class="project_social_media">
             <a v-bind:href="project.twitter"
               ><img src="../assets/logotw.png" alt=""
             /></a>
@@ -24,8 +24,14 @@
 
   <div class="nav">
     <h1>suiecosystem</h1>
-    <!-- <div class="linkBlock">for link in fiture</div> -->
+    <div class="right">
+      <div class="social_media">
+        <a href="#"><img src="../assets/world-wide-web.png" alt=""/></a>
+        <a href="#"><img src="../assets/twitter.png" alt=""/></a>
+        <a href="#"><img src="../assets/2308078_discord_logo_icon.png" alt=""/></a>
+    </div>
     <button onclick="location.href = `https://suiecosystem.top/submit-sui-project/`">Submit</button>
+    </div>
   </div>
   <div class="main">
     <div class="categories">
@@ -48,13 +54,10 @@
             <h3>{{ project.title }}</h3>
           </div>
           <p>{{ project.excerpt.split(",")[0].split(".")[0] }}</p>
-          <div class="social_media">
-            <a v-bind:href="project.twitter"
-              ><img src="../assets/logotw.png" alt=""
-            /></a>
-            <svg class="icon" height="20" width="20">
-              <use xlink:href="#icon-website"></use>
-            </svg>
+          <div class="project_social_media">
+            <a v-if="project.website" v-bind:href="project.website"><img src="../assets/world-wide-web.png" alt=""/></a>
+            <a v-if="project.twitter" v-bind:href="project.twitter"><img src="../assets/twitter.png" alt=""/></a>
+            <a v-if="project.discord" v-bind:href="project.discord"><img src="../assets/2308078_discord_logo_icon.png" alt=""/></a>
           </div>
         </li>
       </ul>
@@ -151,6 +154,11 @@ export default {
   box-shadow: rgba(100, 100, 111, 0.5) 0px 7px 29px 0px;
   backdrop-filter: blur(10px);
 }
+.right{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .title {
   display: flex;
   align-items: center;
@@ -174,7 +182,6 @@ li {
   display: inline-block;
   margin: 15px;
   padding: 10px 20px 10px;
-  /* background-color: #7b7b7b55; */
   background-color: #dfdfdf27;
   border-radius: 15px;
   box-shadow: rgba(100, 100, 111, 0.5) 0px 7px 29px 0px;
@@ -182,7 +189,6 @@ li {
   /* backdrop-filter: blur(5px); */
 }
 li:hover {
-  /* transform: scale(1.05); */
   transform: translateY(-10px);
   background-color: #c6c8e7c2;
 }
@@ -234,6 +240,7 @@ li p {
 }
 .nav button{
   width: 100px;
+  margin: 0;
 }
 .scrollToTop{
   position: fixed;
@@ -262,20 +269,28 @@ li p {
   margin-right: 5px;
 }
 .social_media {
-  height: max-content;
   display: flex;
   position: relative;
-  padding-bottom: 20px;
+  gap: 5px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #dfdfdf27;
 }
 .social_media img {
-  width: 20px;
-  height: 15px;
-  margin-top: 8px;
-  opacity: 0.7;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  box-shadow: rgba(100, 100, 111, 0.5) 0px 7px 29px 0px;
   transition: all 0.3s ease-in-out;
 }
-.social_media img:hover {
-  opacity: 1;
+
+.project_social_media img{
+  margin: 0 3px;
+  width: 20px;
+  height: 20px;
+  opacity: 0.8;
+  transition: all 0.3s ease-in-out;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap");
