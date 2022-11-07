@@ -84,7 +84,7 @@ export default {
       ],
       projects: [],
       bg: [],
-      selectCategory: "",
+      selectCategory: "all",
       page: 1,
       scroll: 0,
       arr: [],
@@ -112,7 +112,7 @@ export default {
     });
 
     axios
-      .get("https://suiecosystem.top/wp-json/api/get_project_all")
+      .get(`https://suiecosystem.top/wp-json/api/get_project_by_slug_pagination/${this.selectCategory}/${this.page}/18`)
       .then((response) => {
 
         response.data.forEach(element => element.excerpt = "Lorem ipsum dolor sit amet consectetur adipisicing elit quidem ipsum repellat est repellendus illo molestias!");
@@ -440,6 +440,9 @@ body {
 }
 
 @media screen and (max-width: 500px) {
+  body{
+    height: auto;
+  }
   .area{
     display: none;
   }
