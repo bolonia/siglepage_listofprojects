@@ -1,14 +1,14 @@
 <template>
-  <HelloWorld />
+  <FunVersion />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import FunVersion from './components/FunVersion'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    FunVersion
   }
 }
 </script>

@@ -6,21 +6,15 @@
         <li v-for="project in this.bg" :key="project.id">
           <div class="title">
             <img
-              src="../assets/logo_telegram_airplane_air_plane_paper_airplane_icon_143170.png"
-              alt=""
-            />
+              v-bind:src="project.icon" alt=""/>
             <h3>{{ project.title }}</h3>
           </div>
           <p>{{ project.excerpt.split(",")[0].split(".")[0] }}</p>
-          <div class="project_social_media">
-            <a v-bind:href="project.twitter"
-              ><img src="../assets/logotw.png" alt=""
-            /></a>
-          </div>
         </li>
       </ul>
     </div>
   </div>
+  
 
   <div class="nav">
     <h1>suiecosystem</h1>
@@ -48,7 +42,7 @@
         <li v-for="project in this.projects" :key="project.id">
           <div class="title">
             <img
-              src="https://suiecosystem.top/wp-content/uploads/2022/08/aySZ37SC_400x400-120x120.jpg"
+            v-bind:src="project.icon"
               alt=""
             />
             <h3>{{ project.title }}</h3>
@@ -70,7 +64,7 @@
 import axios from "axios";
 
 export default {
-  name: "HelloWorld",
+  name: "FunVersion",
   data() {
     return {
       categories: [
@@ -95,7 +89,8 @@ export default {
       scroll: 0,
       arr: [],
       stopLoad: false,
-      showScrollBtn: false
+      showScrollBtn: false,
+      mainPage: true
     };
   },
   mounted() {
@@ -138,6 +133,7 @@ export default {
         .then((response) => {
           this.projects = response.data;
           this.bg = response.data.slice(0, 10);
+          console.log(response.data[1].icon);
         });
     },
   },
@@ -177,7 +173,7 @@ ul {
   padding: 0;
 }
 li {
-  width: 15vw;
+  width: 15rem;
   height: 11rem;
   display: inline-block;
   margin: 15px;
@@ -186,7 +182,7 @@ li {
   border-radius: 15px;
   box-shadow: rgba(100, 100, 111, 0.5) 0px 7px 29px 0px;
   transition: all 0.3s ease-in-out;
-  /* backdrop-filter: blur(5px); */
+  backdrop-filter: blur(5px);
 }
 li:hover {
   transform: translateY(-10px);
@@ -223,7 +219,6 @@ li p {
   border-radius: 1px;
   margin: 0 0 10px 2em;
   padding: 23px 15px;
-  transition: all 0.3s ease-in-out;
   font-size: 1.2em;
   font-weight: 600;
   letter-spacing: 2px;
@@ -298,12 +293,13 @@ li p {
   margin: 0px;
   padding: 0px;
   font-family: "Raleway", sans-serif;
+  /* overflow-x: hidden; */
 }
 
 body {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: repeat-y linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  /* animation: gradient 15s ease infinite; */
   height: 100vh;
 }
 
@@ -323,7 +319,7 @@ body {
   position: fixed;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  /* animation: gradient 15s ease infinite; */
   width: 100%;
   height: 100vh;
   z-index: -2;
@@ -442,4 +438,66 @@ body {
     border-radius: 20%;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .area{
+    display: none;
+  }
+  .main {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: .4em 8vw;
+    box-shadow: rgba(100, 100, 111, 0.5) 0px 7px 29px 0px;
+    backdrop-filter: blur(10px);
+  }
+  .right{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+
+  .categories{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100vw;
+    height: fit-content;
+    margin: 1em 1px 5px;
+    gap: 5px;
+  }
+
+  .categories button, .nav button, .scrollToTop{
+    width: fit-content;
+    height: 2em;
+    margin: 0 5px;
+    padding: 2px 5px;
+    font-size: 1.2em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #2a2a2ac1;
+    background-color: #dfdfdf27;
+    border-radius: 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+  .projects {
+    width: auto;
+    display: block;
+    margin-top: 1em;
+  }
+}
+
 </style>
