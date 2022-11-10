@@ -1,15 +1,15 @@
 <template>
-  <FunVersion />
+  <router-view/>
 </template>
 
 <script>
-import FunVersion from './components/FunVersion'
+// import FunVersion from './components/FunVersion'
 
 export default {
   name: 'App',
-  components: {
-    FunVersion
-  }
+  // components: {
+  //   FunVersion
+  // }
 }
 </script>
 
