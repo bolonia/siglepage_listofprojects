@@ -1,13 +1,10 @@
-// import Vue from 'vue'
 import { createRouter, createWebHistory  } from 'vue-router'
-import MainPage from './components/MainPage.vue';
-import FunVersion from './components/FunVersion.vue';
-
-// Vue.use(VueRouter)
+import MainPage from './components/MainPage';
+import Top from './components/FunVersion';
 
 const routes = [
   { path: '/', component: MainPage },
-  { path: '/fun', component: FunVersion, name: FunVersion }
+  { path: '/top', component: Top}
 ]
 
 const router = createRouter({
