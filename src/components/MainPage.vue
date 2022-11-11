@@ -1,9 +1,10 @@
 <template>
   <div class="nav">
-    <div class="h">suieco
-      <div class="blue">sys</div>
-      tem</div>
+    <div class="h">
+      <div class="blue">sui</div>
+      ecosystem</div>
     <div class="right">
+      <a class="btn_fun" href="/fun">Fun</a>
       <div class="social_media">
         <a href="#"><img src="../assets/safari.png" alt=""/></a>
         <a href="#"><img src="../assets/twitter.png" alt=""/></a>
@@ -33,7 +34,7 @@
             />
             <h3>{{ project.title }}</h3>
           </div>
-          <p>{{ project.excerpt.split(",")[0].split(".")[0] }}</p>
+          <p>{{ project.excerpt.slice(0, 100).split(",")[0].split(".")[0] }}</p>
           <div class="project_social_media">
             <a v-if="project.website" v-bind:href="project.website"><img src="../assets/safari.png" alt=""/></a>
             <a v-if="project.twitter" v-bind:href="project.twitter"><img src="../assets/twitter.png" alt=""/></a>
@@ -116,7 +117,6 @@ export default {
         .then((response) => {
           this.projects = response.data;
           this.bg = response.data.slice(0, 10);
-          console.log(response.data[1].icon);
         });
     },
   },
@@ -142,13 +142,65 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin: 0 8vw .5em;
-  /* padding: .2em 8vw; */
 }
 .right{
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+
+
+.btn_fun {
+  margin: 0 20px;
+  position: relative;
+  display: inline-block;
+  width: 90px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  color: rgb(246, 249, 255);
+  font-size: 20px;
+  text-decoration: none;
+  letter-spacing: 2px;
+  box-sizing: border-box;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 400%;
+  border-radius: 30px;
+  z-index: 1;
+}
+.btn_fun:hover {
+  animation: animate 8s linear infinite;
+}
+ 
+@keyframes animate {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 400%;
+  }
+}
+.btn_fun:before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  bottom: -5px;
+  left: -5px;
+  z-index: -1;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 400%;
+  border-radius: 40px;
+  opacity: 0;
+  transition: .5s;
+}
+.btn_fun:hover:before {
+  filter: blur(20px);
+  opacity: 1;
+  animation: animate 8s linear infinite;
+}
+
+
 .title {
   display: flex;
   align-items: center;
@@ -170,6 +222,7 @@ ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   width: 15rem;
   height: 10rem;
@@ -188,7 +241,6 @@ li:hover {
   background-color: rgb(251, 251, 255);
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 22px 0px;
 }
-
 li p {
   height: 5.2rem;
 }
@@ -234,7 +286,7 @@ li p {
   transition: opacity .2s, transform .2s;
 	transform: translate3d(-1em, 0, 0);
 }
-html { overflow-x: hidden; }
+
 .nav button::after{
   opacity: 0;
 	content: '';
@@ -253,9 +305,7 @@ html { overflow-x: hidden; }
   color: #000;
 }
 .nav button:hover::after,
-.nav button:focus::after,
-.categories button:hover::after,
-.categories button:focus::after {
+.categories button:hover::after {
 	opacity: 1;
 	transform: translate3d(0, 0, 0);
 }
@@ -315,7 +365,6 @@ html { overflow-x: hidden; }
   margin: 10px;
   padding: 10px;
   border-radius: 15px;
-  /* background-color: #dfdfdf27; */
   box-shadow: rgba(100, 100, 111, 0.1) 1px 2px 5px 2px;
 }
 .social_media img {
@@ -332,12 +381,10 @@ html { overflow-x: hidden; }
   transition: all 0.3s ease-in-out;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 * {
   margin: 0px;
   padding: 0px;
-  /* font-family: 'Gugi', cursive; */
   font-family: 'Inter', sans-serif;
 }
 
@@ -351,9 +398,6 @@ body{
 @media screen and (max-width: 500px) {
   body{
     height: auto;
-  }
-  .area{
-    display: none;
   }
   .main {
     display: flex;
@@ -400,9 +444,6 @@ body{
     font-weight: 600;
     letter-spacing: 2px;
     color: #2a2a2ac1;
-    background-color: #dfdfdf27;
-    border-radius: 15px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
 
   .projects {

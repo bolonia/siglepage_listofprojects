@@ -2,7 +2,7 @@
   <!-- blocks in background -->
   <div class="area">
     <div class="circles projects">
-      <ul>
+      <ul class="fun">
         <li v-for="project in this.bg" :key="project.id">
           <div class="title">
             <img
@@ -28,7 +28,7 @@
     </div>
   </div>
   <div class="main">
-    <div class="categories">
+    <div class="categories_fun">
       <button
         @click="selectCategoryHandler"
         v-for="item in this.categories"
@@ -139,6 +139,11 @@ export default {
 </script>
 
 <style scoped>
+body{
+    left: 0;
+    top:0;
+    box-sizing: 0;
+  }
 .nav{
   display: flex;
   justify-content: space-between;
@@ -171,6 +176,7 @@ ul {
   padding: 0;
 }
 li {
+  border: none;
   width: 15rem;
   height: 11rem;
   display: inline-block;
@@ -196,7 +202,7 @@ li p {
   padding: 0 5em;
 }
 
-.categories {
+.categories_fun {
   width: 20vw;
   height: 100vh;
   margin-top: 1.9em;
@@ -208,7 +214,7 @@ li p {
   margin-top: 1em;
 }
 
-.categories button, .nav button, .scrollToTop{
+.categories_fun button, .nav button, .scrollToTop{
   display: block;
   width: 80%;
   text-align: justify;
@@ -221,13 +227,12 @@ li p {
   font-weight: 600;
   letter-spacing: 2px;
   color: #2a2a2ac1;
-  /* background-color: #dfdfdf27; */
   background-color: #dfdfdf27;
   border-radius: 15px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: all 0.2s ease-in-out;
 }
-.categories button:hover, .nav button:hover {
+.categories_fun button:hover, .nav button:hover {
   background-color: #c6c8e7c2;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
@@ -297,7 +302,7 @@ li p {
 body {
   background: repeat-y linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
-  /* animation: gradient 15s ease infinite; */
+  animation: gradient 15s ease infinite;
   height: 100vh;
 }
 
@@ -317,7 +322,7 @@ body {
   position: fixed;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
-  /* animation: gradient 15s ease infinite; */
+  animation: gradient 15s ease infinite;
   width: 100%;
   height: 100vh;
   z-index: -2;
@@ -438,9 +443,12 @@ body {
 }
 
 @media screen and (max-width: 500px) {
-  body{
-    height: auto;
-  }
+  body {
+  background: repeat-y linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: auto;
+}
   .area{
     display: none;
   }
@@ -469,7 +477,7 @@ body {
   }
 
 
-  .categories{
+  .categories_fun{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -480,7 +488,7 @@ body {
     gap: 5px;
   }
 
-  .categories button, .nav button, .scrollToTop{
+  .categories_fun button, .nav button, .scrollToTop{
     width: fit-content;
     height: 2em;
     margin: 0 5px;
