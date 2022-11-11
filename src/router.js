@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory  } from 'vue-router'
-import MainPage from './components/MainPage';
-import FunVersion from './components/FunVersion';
+import MainPage from './components/MainPage.vue';
+import FunVersion from './components/FunVersion.vue';
 
 const routes = [
   { path: '/', component: MainPage },
