@@ -1,13 +1,13 @@
 <template>
   <div class="nav">
-    <div class="h">
-      <div class="blue">sui</div>
+    <div class="h" @click="$router.push('/')">
+      <div class="blue">Sui</div>
       ecosystem</div>
     <div class="right">
       <button class="btn_fun" @click="$router.push('/fun')">Fun</button>
       <div class="social_media">
-        <a href="#"><img src="../assets/safari.png" alt=""/></a>
-        <a href="#"><img src="../assets/twitter.png" alt=""/></a>
+        <a href="https://suiecosystem.top"><img src="../assets/safari.png" alt=""/></a>
+        <a href="https://twitter.com/SuiEcosystem"><img src="../assets/twitter.png" alt=""/></a>
         <a href="#"><img src="../assets/discord.png" alt=""/></a>
     </div>
     <button class="btn_submit" onclick="location.href = `https://suiecosystem.top/submit-sui-project/`">Submit</button>
@@ -28,13 +28,15 @@
       <ul>
         <li v-for="project in this.projects" :key="project.id">
           <div class="title">
-            <img
-            v-bind:src="project.icon"
-              alt=""
-            />
-            <h3>{{ project.title }}</h3>
+            <img v-bind:src="project.icon" alt=""/>
+            <div >
+              <h3>{{ project.title }}</h3>
+              <div class="block_categories_in_card">
+                <div class="categories_in_card" v-for="category in project.category" :key="category">{{ category.name }}</div>
+              </div>
+            </div>
           </div>
-          <p>{{ project.excerpt.slice(0, 100).split(",")[0].split(".")[0] }}</p>
+          <p>{{ project.excerpt.slice(0, 110) }}</p>  <!--split(",")[0].split(".")[0]--> 
           <div class="project_social_media">
             <a v-if="project.website" v-bind:href="project.website"><img src="../assets/safari.png" alt=""/></a>
             <a v-if="project.twitter" v-bind:href="project.twitter"><img src="../assets/twitter.png" alt=""/></a>
@@ -129,9 +131,10 @@ export default {
   font-size: 2em;
   font-weight: 800;
   letter-spacing: 1px;
+  cursor: pointer;
 }
 .blue{
-  padding: 0 5px 5px;
+  padding: 0 5px 2px;
   margin: 1px;
   border-radius: 15px;
   background: #2a2a2a;
@@ -218,16 +221,17 @@ export default {
 ul {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   list-style-type: none;
   padding: 0;
 }
 
 li {
   width: 15rem;
-  height: 10rem;
+  min-height: 10rem;
+  /* height: 10rem; */
   display: inline-block;
-  margin: 20px;
+  margin: 15px;
   padding: 10px 20px 10px;
   background-color: rgb(248, 248, 255);
   border: 0.05rem solid #eee;
@@ -324,6 +328,19 @@ li p {
 }
 .btn_fun{
   font-size: 1.1em;
+}
+
+.block_categories_in_card{
+  display: -webkit-box;
+  width: 100%;
+}
+.categories_in_card{
+  font-size: 12px;
+  padding: 0 2px 0 0;
+  margin: 0 2px 0 0;
+  border-radius: 5px;
+  color: #2a2a2ac1;
+  /* background: #cfcebfdf; */
 }
 
 .scrollToTop{

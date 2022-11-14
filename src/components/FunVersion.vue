@@ -17,7 +17,7 @@
   
 
   <div class="nav">
-    <h1>suiecosystem</h1>
+    <h1 class="h" @click="$router.push('/')">Suiecosystem</h1>
     <div class="right">
       <button class="btn_fun" @click="$router.push('/')">Main</button>
 
@@ -133,7 +133,6 @@ export default {
         .then((response) => {
           this.projects = response.data;
           this.bg = response.data.slice(0, 10);
-          console.log(response.data[1].icon);
         });
     },
   },
