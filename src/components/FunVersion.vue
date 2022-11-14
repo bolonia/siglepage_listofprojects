@@ -19,12 +19,14 @@
   <div class="nav">
     <h1>suiecosystem</h1>
     <div class="right">
+      <button class="btn_fun" @click="$router.push('/')">Main</button>
+
       <div class="social_media">
         <a href="#"><img src="../assets/world-wide-web.png" alt=""/></a>
         <a href="#"><img src="../assets/twitter.png" alt=""/></a>
         <a href="#"><img src="../assets/2308078_discord_logo_icon.png" alt=""/></a>
     </div>
-    <button onclick="location.href = `https://suiecosystem.top/submit-sui-project/`">Submit</button>
+    <button class="fun_btn_submit" onclick="location.href = `https://suiecosystem.top/submit-sui-project/`">Submit</button>
     </div>
   </div>
   <div class="main">
@@ -158,6 +160,17 @@ body{
   flex-direction: row;
   align-items: center;
 }
+
+.btn_fun{
+  width: 80px;
+  border-radius: 15px;
+  background-color: #dfdfdf27;
+}
+.btn_fun:hover{
+  color: #2a2a2ac1;
+  transform: none;
+}
+
 .title {
   display: flex;
   align-items: center;
@@ -214,7 +227,7 @@ li p {
   margin-top: 1em;
 }
 
-.categories_fun button, .nav button, .scrollToTop{
+.categories_fun button, .fun_btn_submit, .scrollToTop{
   display: block;
   width: 80%;
   text-align: justify;
@@ -232,11 +245,11 @@ li p {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: all 0.2s ease-in-out;
 }
-.categories_fun button:hover, .nav button:hover {
+.categories_fun button:hover, .fun_btn_submit:hover, .btn_fun:hover {
   background-color: #c6c8e7c2;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.nav button{
+.fun_btn_submit{
   width: 100px;
   margin: 0;
 }
@@ -275,6 +288,7 @@ li p {
   border-radius: 15px;
   background-color: #dfdfdf27;
 }
+
 .social_media img {
   width: 24px;
   height: 24px;
@@ -488,7 +502,7 @@ body {
     gap: 5px;
   }
 
-  .categories_fun button, .nav button, .scrollToTop{
+  .categories_fun button, .fun_btn_submit, .scrollToTop{
     width: fit-content;
     height: 2em;
     margin: 0 5px;

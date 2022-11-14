@@ -10,7 +10,7 @@
         <a href="#"><img src="../assets/twitter.png" alt=""/></a>
         <a href="#"><img src="../assets/discord.png" alt=""/></a>
     </div>
-    <button onclick="location.href = `https://suiecosystem.top/submit-sui-project/`">Submit</button>
+    <button class="btn_submit" onclick="location.href = `https://suiecosystem.top/submit-sui-project/`">Submit</button>
     </div>
   </div>
   
@@ -287,7 +287,7 @@ li p {
 	transform: translate3d(-1em, 0, 0);
 }
 
-.nav button::after{
+.btn_submit::after{
   opacity: 0;
 	content: '';
 	position: absolute;
@@ -300,17 +300,17 @@ li p {
 	transform: translate3d(0, .7rem, 0);
   margin: -5px;
 }
-.categories button:hover, .nav button:hover{
+.categories button:hover, .btn_submit:hover, .btn_fun:hover{
   transform: scale(1.05);
   color: #000;
 }
-.nav button:hover::after,
+.btn_submit:hover::after,
 .categories button:hover::after {
 	opacity: 1;
 	transform: translate3d(0, 0, 0);
 }
 
-.nav button{
+.btn_submit, .btn_fun{
   margin: 0 50px;
   outline: none;
   border: none;
@@ -321,6 +321,9 @@ li p {
   color: #2a2a2ac1;
   transition: all 0.2s ease-in-out;
   text-align: center;
+}
+.btn_fun{
+  font-size: 1.1em;
 }
 
 .scrollToTop{
@@ -435,7 +438,7 @@ body{
     gap: 5px;
   }
 
-  .categories button, .nav button, .scrollToTop{
+  .categories button, .btn_submit, .scrollToTop{
     width: fit-content;
     height: 2em;
     margin: 0 5px;
