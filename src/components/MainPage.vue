@@ -4,7 +4,7 @@
       <div class="blue">sui</div>
       ecosystem</div>
     <div class="right">
-      <a class="btn_fun" href="/fun">Fun</a>
+      <button class="btn_fun" @click="$router.push('/fun')">Fun</button>
       <div class="social_media">
         <a href="#"><img src="../assets/safari.png" alt=""/></a>
         <a href="#"><img src="../assets/twitter.png" alt=""/></a>
