@@ -1,6 +1,9 @@
 <template>
   <div class="background">
     <img class="floating_block" src="../assets/block1.png" alt="">
+    <img class="floating_block" src="../assets/block2.png" alt="">
+    <img class="floating_block" src="../assets/block3.png" alt="">
+    <img class="floating_block" src="../assets/block4.png" alt="">
   </div>
   <div class="nav">
     <div class="h" @click="$router.push('/')">
@@ -91,6 +94,9 @@ export default {
       const speed = 0.01;
       // blocks[0].style.cssText = `transform: translate(${e.screenX * 0.05}, 0);`
       blocks[0].style.cssText = `bottom: ${100 + e.screenY * speed}px; left: ${100 + e.screenX * speed}px;`;
+      blocks[1].style.cssText = `top: ${120 + e.screenY * speed * 2}px; left: ${100 + e.screenX * -speed * 2}px;`;
+      blocks[2].style.cssText = `top: ${400 + e.screenY * speed}px; left: ${300 + e.screenX * -speed}px;`;
+      blocks[3].style.cssText = `top: ${200 + e.screenY * -speed / 1.2}px; left: ${document.documentElement.clientWidth -200 -e.screenX * -speed}px;`;
     });
     window.addEventListener("scroll", () => {
       window.pageYOffset > 20 ? this.showScrollBtn = true : this.showScrollBtn = false;
@@ -138,12 +144,15 @@ export default {
 <style >
 .background img{
   position: absolute;
-  z-index: -2;
+  /* z-index: -2; */
   width: 100px;
   height: 100px;
 
   bottom: 5vh;
   left: 5vw;
+}
+.background img:nth-child(1), img:nth-child(2){
+  filter: blur(2px);
 }
 .h{
   display: flex;
