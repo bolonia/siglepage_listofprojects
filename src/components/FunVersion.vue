@@ -22,9 +22,9 @@
       <button class="btn_fun" @click="$router.push('/')">Main</button>
 
       <div class="social_media">
-        <a href="#"><img src="../assets/world-wide-web.png" alt=""/></a>
-        <a href="#"><img src="../assets/twitter.png" alt=""/></a>
-        <a href="#"><img src="../assets/2308078_discord_logo_icon.png" alt=""/></a>
+        <a target="_blank" href="https://suiecosystem.top"><img src="../assets/world-wide-web.png" alt=""/></a>
+        <a target="_blank" href="https://twitter.com/SuiEcosystem"><img src="../assets/twitter.png" alt=""/></a>
+        <a target="_blank" href="#"><img src="../assets/2308078_discord_logo_icon.png" alt=""/></a>
     </div>
     <button class="fun_btn_submit" onclick="location.href = `https://suiecosystem.top/submit-sui-project/`">Submit</button>
     </div>
@@ -43,11 +43,13 @@
       <ul>
         <li v-for="project in this.projects" :key="project.id">
           <div class="title">
-            <img
-            v-bind:src="project.icon"
-              alt=""
-            />
-            <h3>{{ project.title }}</h3>
+            <img v-bind:src="project.icon" alt=""/>
+            <div >
+              <h3>{{ project.title }}</h3>
+              <div class="block_categories_in_card">
+                <div class="categories_in_card" v-for="category in project.category" :key="category">{{ category.name }}</div>
+              </div>
+            </div>
           </div>
           <p>{{ project.excerpt.split(",")[0].split(".")[0] }}</p>
           <div class="project_social_media">
@@ -251,6 +253,18 @@ li p {
 .fun_btn_submit{
   width: 100px;
   margin: 0;
+}
+
+.block_categories_in_card{
+  display: -webkit-box;
+  width: 100%;
+}
+.categories_in_card{
+  font-size: 12px;
+  padding: 0 2px 0 0;
+  margin: 0 2px 0 0;
+  border-radius: 5px;
+  color: #2a2a2ac1;
 }
 .scrollToTop{
   position: fixed;

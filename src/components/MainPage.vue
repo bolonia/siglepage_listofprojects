@@ -1,4 +1,7 @@
 <template>
+  <div class="background">
+    <img class="floating_block" src="../assets/block1.png" alt="">
+  </div>
   <div class="nav">
     <div class="h" @click="$router.push('/')">
       <div class="blue">Sui</div>
@@ -6,9 +9,9 @@
     <div class="right">
       <button class="btn_fun" @click="$router.push('/fun')">Fun</button>
       <div class="social_media">
-        <a href="https://suiecosystem.top"><img src="../assets/safari.png" alt=""/></a>
-        <a href="https://twitter.com/SuiEcosystem"><img src="../assets/twitter.png" alt=""/></a>
-        <a href="#"><img src="../assets/discord.png" alt=""/></a>
+        <a target="_blank" href="https://suiecosystem.top"><img src="../assets/safari.png" alt=""/></a>
+        <a target="_blank" href="https://twitter.com/SuiEcosystem"><img src="../assets/twitter.png" alt=""/></a>
+        <a target="_blank" href="#"><img src="../assets/discord.png" alt=""/></a>
     </div>
     <button class="btn_submit" onclick="location.href = `https://suiecosystem.top/submit-sui-project/`">Submit</button>
     </div>
@@ -38,9 +41,9 @@
           </div>
           <p>{{ project.excerpt.slice(0, 110) }}</p>  <!--split(",")[0].split(".")[0]--> 
           <div class="project_social_media">
-            <a v-if="project.website" v-bind:href="project.website"><img src="../assets/safari.png" alt=""/></a>
-            <a v-if="project.twitter" v-bind:href="project.twitter"><img src="../assets/twitter.png" alt=""/></a>
-            <a v-if="project.discord" v-bind:href="project.discord"><img src="../assets/discord.png" alt=""/></a>
+            <a target="_blank" v-if="project.website" v-bind:href="project.website"><img src="../assets/safari.png" alt=""/></a>
+            <a target="_blank" v-if="project.twitter" v-bind:href="project.twitter"><img src="../assets/twitter.png" alt=""/></a>
+            <a target="_blank" v-if="project.discord" v-bind:href="project.discord"><img src="../assets/discord.png" alt=""/></a>
           </div>
         </li>
       </ul>
@@ -82,6 +85,13 @@ export default {
     };
   },
   mounted() {
+    window.addEventListener('mousemove', (e) => {
+      console.log(e.screenX, e.screenY);
+      const blocks = document.getElementsByClassName('floating_block');
+      const speed = 0.01;
+      // blocks[0].style.cssText = `transform: translate(${e.screenX * 0.05}, 0);`
+      blocks[0].style.cssText = `bottom: ${100 + e.screenY * speed}px; left: ${100 + e.screenX * speed}px;`;
+    });
     window.addEventListener("scroll", () => {
       window.pageYOffset > 20 ? this.showScrollBtn = true : this.showScrollBtn = false;
       if (document.documentElement.scrollHeight - 20 <= document.documentElement.scrollTop +document.documentElement.clientHeight){
@@ -125,7 +135,16 @@ export default {
 }
 </script>
 
-<style>
+<style >
+.background img{
+  position: absolute;
+  z-index: -2;
+  width: 100px;
+  height: 100px;
+
+  bottom: 5vh;
+  left: 5vw;
+}
 .h{
   display: flex;
   font-size: 2em;
@@ -255,6 +274,7 @@ li p {
 }
 
 .categories {
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -340,7 +360,6 @@ li p {
   margin: 0 2px 0 0;
   border-radius: 5px;
   color: #2a2a2ac1;
-  /* background: #cfcebfdf; */
 }
 
 .scrollToTop{
