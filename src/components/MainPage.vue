@@ -154,6 +154,28 @@ export default {
 .background img:nth-child(1), img:nth-child(2){
   filter: blur(2px);
 }
+.background img:nth-child(1), img:nth-child(4){
+  animation: 40s rotate infinite linear;
+}
+.background img:nth-child(2), img:nth-child(3){
+  animation: 40s antirotate infinite linear;
+}
+@keyframes rotate{
+  from{
+    transform:rotate(0)
+  }
+  to{
+    transform:rotate(360deg)
+  }
+}
+@keyframes antirotate{
+  from{
+    transform:rotate(0)
+  }
+  to{
+    transform:rotate(-360deg)
+  }
+}
 .h{
   display: flex;
   font-size: 2em;
