@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Main from '../components/MainPage'
 import Fun from '../components/FunVersion'
+import CategoriesPage from '../components/CategoriesPage'
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: '/fun',
     name: 'Fun',
     component: Fun
+  },
+  {
+    path: '/categories',
+    name: 'CategoriesPage',
+    component: CategoriesPage
   }
 ]
 

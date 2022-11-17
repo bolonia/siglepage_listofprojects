@@ -11,6 +11,7 @@
       ecosystem</div>
     <div class="right">
       <button class="btn_fun" @click="$router.push('/fun')">Fun</button>
+      <button class="btn_submit" @click="$router.push('/categories')">Categories</button>
       <div class="social_media">
         <a target="_blank" href="https://suiecosystem.top"><img src="../assets/safari.png" alt=""/></a>
         <a target="_blank" href="https://twitter.com/SuiEcosystem"><img src="../assets/twitter.png" alt=""/></a>
@@ -22,17 +23,11 @@
   
   <div class="main">
     <div class="categories">
-      <button
-        @click="selectCategoryHandler"
-        v-for="item in this.categories"
-        :key="item"
-      >
-        {{ item }}
-      </button>
+      <button  @click="selectCategoryHandler" v-for="item in this.categories" :key="item"> {{ item }} </button>
     </div>
     <div class="projects">
       <ul>
-        <li v-for="project in this.projects" :key="project.id">
+        <li class="project_mp" v-for="project in this.projects" :key="project.id">
           <div class="title">
             <img v-bind:src="project.icon" alt=""/>
             <div >
@@ -89,10 +84,8 @@ export default {
   },
   mounted() {
     window.addEventListener('mousemove', (e) => {
-      console.log(e.screenX, e.screenY);
       const blocks = document.getElementsByClassName('floating_block');
       const speed = 0.01;
-      // blocks[0].style.cssText = `transform: translate(${e.screenX * 0.05}, 0);`
       blocks[0].style.cssText = `bottom: ${100 + e.screenY * speed}px; left: ${100 + e.screenX * speed}px;`;
       blocks[1].style.cssText = `top: ${120 + e.screenY * speed * 2}px; left: ${100 + e.screenX * -speed * 2}px;`;
       blocks[2].style.cssText = `top: ${400 + e.screenY * speed}px; left: ${300 + e.screenX * -speed}px;`;
@@ -276,7 +269,7 @@ ul {
   padding: 0;
 }
 
-li {
+.project_mp {
   width: 15rem;
   min-height: 10rem;
   /* height: 10rem; */
