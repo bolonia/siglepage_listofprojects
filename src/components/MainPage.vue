@@ -27,7 +27,8 @@
     </div>
     <div class="projects">
       <ul>
-        <li class="project_mp" v-for="project in this.projects" :key="project.id">
+        <ProjectCard class="project_mp" v-for="project in this.projects" :key="project.id" :projectData="project"/>
+        <!-- <li class="project_mp" v-for="project in this.projects" :key="project.id">
           <div class="title">
             <img v-bind:src="project.icon" alt=""/>
             <div >
@@ -37,13 +38,13 @@
               </div>
             </div>
           </div>
-          <p>{{ project.excerpt.slice(0, 110) }}</p>  <!--split(",")[0].split(".")[0]--> 
+          <p>{{ project.excerpt.slice(0, 110) }}</p> 
           <div class="project_social_media">
             <a target="_blank" v-if="project.website" v-bind:href="project.website"><img src="../assets/safari.png" alt=""/></a>
             <a target="_blank" v-if="project.twitter" v-bind:href="project.twitter"><img src="../assets/twitter.png" alt=""/></a>
             <a target="_blank" v-if="project.discord" v-bind:href="project.discord"><img src="../assets/discord.png" alt=""/></a>
           </div>
-        </li>
+        </li> -->
       </ul>
     </div>
     <button v-show="this.showScrollBtn" onclick="window.scrollTo(0, 0)" class="scrollToTop"><img src="../assets/double-arrow-top-icon.png" alt=""></button>
@@ -52,8 +53,13 @@
 
 <script>
 import axios from "axios";
+import ProjectCard from "./ProjectCard.vue";
+
 export default {
     name: "MainPage",
+    components: {
+      ProjectCard
+    },
     data() {
     return {
       categories: [
@@ -137,7 +143,7 @@ export default {
 <style >
 .background img{
   position: absolute;
-  /* z-index: -2; */
+  z-index: -2;
   width: 100px;
   height: 100px;
 
@@ -247,7 +253,7 @@ export default {
 }
 
 
-.title {
+/* .title {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -259,12 +265,11 @@ export default {
   border-radius: 50%;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 10px 0px;
   margin-right: 5px;
-}
+} */
 
 ul {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-around; */
   list-style-type: none;
   padding: 0;
 }
@@ -272,7 +277,7 @@ ul {
 .project_mp {
   width: 15rem;
   min-height: 10rem;
-  /* height: 10rem; */
+  height: 10rem;
   display: inline-block;
   margin: 15px;
   padding: 10px 20px 10px;
@@ -374,7 +379,7 @@ li p {
   font-size: 1.1em;
 }
 
-.block_categories_in_card{
+/* .block_categories_in_card{
   display: -webkit-box;
   width: 100%;
 }
@@ -384,7 +389,7 @@ li p {
   margin: 0 2px 0 0;
   border-radius: 5px;
   color: #2a2a2ac1;
-}
+} */
 
 .scrollToTop{
   display: block;
@@ -436,13 +441,13 @@ li p {
   border-radius: 50%;
 }
 
-.project_social_media img{
+/* .project_social_media img{
   margin: 0 3px;
   width: 20px;
   height: 20px;
   opacity: 0.8;
   transition: all 0.3s ease-in-out;
-}
+} */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 * {

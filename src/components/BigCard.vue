@@ -1,23 +1,36 @@
 <template>
-    <div className="category_BigCard">
-        <div className="ctext">
+    <!-- <div className="category_BigCard"> -->
+      <div>
+      <h1>{{this.dataEl}}</h1>
+      <hr>
+      <div class="projects">
+        <ul>
+          <ProjectCard class="project_mp" v-for="project in this.projects" :key="project.id" :projectData="project"/>
+
+        </ul>
+      </div>
+        <!-- <div className="ctext">
           <h2>{{this.dataEl}}</h2>
           <ol>
             <li v-for="project in this.projects" :key="project">
               <span className="NumName"><span>{{project.title}}</span></span> 
             </li>
           </ol>
-          <span @click="selectCategoryHandler">See more</span>
-        </div>
+          <span class="seemore" @click="selectCategoryHandler">See more</span>
+        </div> -->
       </div>
 </template>
 
 <script>
 import axios from 'axios';
+import ProjectCard from './ProjectCard.vue';
 
 export default {
     name: "BigCard",
     props: ['dataEl'],
+    components: {
+      ProjectCard
+    },
     data() {
       return {
         projects: [],
@@ -26,26 +39,14 @@ export default {
     },
     mounted() {
       axios
-      .get(`https://suiecosystem.top/wp-json/api/get_project_by_slug_pagination/${this.dataEl}/1/3`)
+      .get(`https://suiecosystem.top/wp-json/api/get_project_by_slug_pagination/${this.dataEl}/1/20`)
       .then((response) => {
         this.projects = response.data;
       })
       .catch((err) => {
         console.log(err);
       });
-    },
-    methods: {
-    selectCategoryHandler(e) {
-      this.selectCategory = e.path[0].innerText.toLowerCase().replace(/ /g, "-");
-
-      axios
-        .get(`https://suiecosystem.top/wp-json/api/get_project_by_slug_pagination/${this.selectCategory}/1/18`)
-        .then((response) => {
-          this.projects = response.data;
-          this.bg = response.data.slice(0, 10);
-        });
-    },
-  },
+    }
 }
 </script>
 
@@ -72,7 +73,6 @@ export default {
     border-radius: 20px;
     background: #6666667d;
     color: white;
-    /* padding: 2rem; */
     padding: 1rem;
     text-align: left;
     font-family: "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -109,5 +109,23 @@ export default {
 
   .NumName *{
     margin-left: 10px;
+  }
+
+  .seemore{
+    cursor: pointer;
+  }
+
+
+  .projects{
+    margin: 5px;
+  }
+
+  h1{
+    font-size: 48px;
+  }
+  hr{
+    height: 2px;
+    background-color: #2a2a2ac1;
+    border: none;
   }
 </style>
