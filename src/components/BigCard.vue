@@ -128,4 +128,8 @@ export default {
     background-color: #2a2a2ac1;
     border: none;
   }
+
+  ul{
+    justify-content: center;
+  }
 </style>
