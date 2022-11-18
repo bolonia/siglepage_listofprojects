@@ -1,10 +1,5 @@
 <template>
-  <div class="background">
-    <img class="floating_block" src="../assets/block1.png" alt="">
-    <img class="floating_block" src="../assets/block2.png" alt="">
-    <img class="floating_block" src="../assets/block3.png" alt="">
-    <img class="floating_block" src="../assets/block4.png" alt="">
-  </div>
+  <Background/>
   <div class="nav">
     <div class="h" @click="$router.push('/')">
       <div class="blue">Sui</div>
@@ -26,25 +21,8 @@
       <button  @click="selectCategoryHandler" v-for="item in this.categories" :key="item"> {{ item }} </button>
     </div>
     <div class="projects">
-      <ul>
+      <ul class="ul_in_main">
         <ProjectCard class="project_mp" v-for="project in this.projects" :key="project.id" :projectData="project"/>
-        <!-- <li class="project_mp" v-for="project in this.projects" :key="project.id">
-          <div class="title">
-            <img v-bind:src="project.icon" alt=""/>
-            <div >
-              <h3>{{ project.title }}</h3>
-              <div class="block_categories_in_card">
-                <div class="categories_in_card" v-for="category in project.category" :key="category">{{ category.name }}</div>
-              </div>
-            </div>
-          </div>
-          <p>{{ project.excerpt.slice(0, 110) }}</p> 
-          <div class="project_social_media">
-            <a target="_blank" v-if="project.website" v-bind:href="project.website"><img src="../assets/safari.png" alt=""/></a>
-            <a target="_blank" v-if="project.twitter" v-bind:href="project.twitter"><img src="../assets/twitter.png" alt=""/></a>
-            <a target="_blank" v-if="project.discord" v-bind:href="project.discord"><img src="../assets/discord.png" alt=""/></a>
-          </div>
-        </li> -->
       </ul>
     </div>
     <button v-show="this.showScrollBtn" onclick="window.scrollTo(0, 0)" class="scrollToTop"><img src="../assets/double-arrow-top-icon.png" alt=""></button>
@@ -54,11 +32,13 @@
 <script>
 import axios from "axios";
 import ProjectCard from "./ProjectCard.vue";
+import Background from "./Background.vue";
 
 export default {
     name: "MainPage",
     components: {
-      ProjectCard
+      ProjectCard,
+      Background
     },
     data() {
     return {
@@ -78,7 +58,6 @@ export default {
         "Wallet",
       ],
       projects: [],
-      bg: [],
       selectCategory: "all",
       page: 1,
       scroll: 0,
@@ -89,14 +68,6 @@ export default {
     };
   },
   mounted() {
-    window.addEventListener('mousemove', (e) => {
-      const blocks = document.getElementsByClassName('floating_block');
-      const speed = 0.01;
-      blocks[0].style.cssText = `bottom: ${100 + e.screenY * speed}px; left: ${100 + e.screenX * speed}px;`;
-      blocks[1].style.cssText = `top: ${120 + e.screenY * speed * 2}px; left: ${100 + e.screenX * -speed * 2}px;`;
-      blocks[2].style.cssText = `top: ${400 + e.screenY * speed}px; left: ${300 + e.screenX * -speed}px;`;
-      blocks[3].style.cssText = `top: ${200 + e.screenY * -speed / 1.2}px; left: ${document.documentElement.clientWidth -200 -e.screenX * -speed}px;`;
-    });
     window.addEventListener("scroll", () => {
       window.pageYOffset > 20 ? this.showScrollBtn = true : this.showScrollBtn = false;
       if (document.documentElement.scrollHeight - 20 <= document.documentElement.scrollTop +document.documentElement.clientHeight){
@@ -117,9 +88,7 @@ export default {
     axios
       .get(`https://suiecosystem.top/wp-json/api/get_project_by_slug_pagination/${this.selectCategory}/${this.page}/18`)
       .then((response) => {
-
         this.projects = response.data;
-        this.bg = response.data.slice(0, 10);
       });
   },
   methods: {
@@ -133,7 +102,6 @@ export default {
         .get(`https://suiecosystem.top/wp-json/api/get_project_by_slug_pagination/${this.selectCategory}/1/18`)
         .then((response) => {
           this.projects = response.data;
-          this.bg = response.data.slice(0, 10);
         });
     },
   },
@@ -141,40 +109,7 @@ export default {
 </script>
 
 <style >
-.background img{
-  position: absolute;
-  z-index: -2;
-  width: 100px;
-  height: 100px;
 
-  bottom: 5vh;
-  left: 5vw;
-}
-.background img:nth-child(1), img:nth-child(2){
-  filter: blur(2px);
-}
-.background img:nth-child(1), img:nth-child(4){
-  animation: 40s rotate infinite linear;
-}
-.background img:nth-child(2), img:nth-child(3){
-  animation: 40s antirotate infinite linear;
-}
-@keyframes rotate{
-  from{
-    transform:rotate(0)
-  }
-  to{
-    transform:rotate(360deg)
-  }
-}
-@keyframes antirotate{
-  from{
-    transform:rotate(0)
-  }
-  to{
-    transform:rotate(-360deg)
-  }
-}
 .h{
   display: flex;
   font-size: 2em;
@@ -252,22 +187,7 @@ export default {
   animation: animate 8s linear infinite;
 }
 
-
-/* .title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-.title img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 10px 0px;
-  margin-right: 5px;
-} */
-
-ul {
+.ul_in_main {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
@@ -379,18 +299,6 @@ li p {
   font-size: 1.1em;
 }
 
-/* .block_categories_in_card{
-  display: -webkit-box;
-  width: 100%;
-}
-.categories_in_card{
-  font-size: 12px;
-  padding: 0 2px 0 0;
-  margin: 0 2px 0 0;
-  border-radius: 5px;
-  color: #2a2a2ac1;
-} */
-
 .scrollToTop{
   display: block;
   text-align: justify;
@@ -440,14 +348,6 @@ li p {
   height: 24px;
   border-radius: 50%;
 }
-
-/* .project_social_media img{
-  margin: 0 3px;
-  width: 20px;
-  height: 20px;
-  opacity: 0.8;
-  transition: all 0.3s ease-in-out;
-} */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 * {

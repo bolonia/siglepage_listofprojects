@@ -1,10 +1,5 @@
 <template>
-  <div class="background">
-    <img class="floating_block" src="../assets/block1.png" alt="">
-    <img class="floating_block" src="../assets/block2.png" alt="">
-    <img class="floating_block" src="../assets/block3.png" alt="">
-    <img class="floating_block" src="../assets/block4.png" alt="">
-  </div>
+  <Background/>
   <div class="nav">
     <div class="h" @click="$router.push('/')">
       <div class="blue">Sui</div>
@@ -28,11 +23,13 @@
 
 <script>
 import BigCard from './BigCard.vue';
+import Background from './Background.vue';
 
 export default {
     name: 'CategoriesPage',
     components: {
-      BigCard
+      BigCard,
+      Background
     },
     data() {
     return {
@@ -40,29 +37,20 @@ export default {
         "NFT",
         // "Bridge",
         "DeFi",
-        "Dex",
-        "GameFi",
-        // "Infrastructure",
+        // "Dex",
+        // "GameFi",
+        "Infrastructure",
         // "Launchpad",
         // "Name Service",
         // "NFT Market",
         // "Official Partners",
-        "SocialFi",
+        // "SocialFi",
         // "Tools",
         "Wallet",
       ],
     };
   },
-  mounted() {
-    window.addEventListener('mousemove', (e) => {
-      const blocks = document.getElementsByClassName('floating_block');
-      const speed = 0.01;
-      blocks[0].style.cssText = `bottom: ${100 + e.screenY * speed}px; left: ${100 + e.screenX * speed}px;`;
-      blocks[1].style.cssText = `top: ${120 + e.screenY * speed * 2}px; left: ${100 + e.screenX * -speed * 2}px;`;
-      blocks[2].style.cssText = `top: ${400 + e.screenY * speed}px; left: ${300 + e.screenX * -speed}px;`;
-      blocks[3].style.cssText = `top: ${200 + e.screenY * -speed / 1.2}px; left: ${document.documentElement.clientWidth -200 -e.screenX * -speed}px;`;
-    });
-  }
+  
 }
 </script>
 
@@ -71,6 +59,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 0 20vw;
+  /* padding: 0 20vw; */
+  padding: 0;
+  margin: -2.5em 0;
 }
 </style>
