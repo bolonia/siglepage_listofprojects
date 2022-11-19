@@ -21,6 +21,7 @@
   </div>
 </template>
 
+
 <script>
 import BigCard from './BigCard.vue';
 import Background from './Background.vue';
@@ -35,17 +36,17 @@ export default {
     return {
       categories: [
         "NFT",
-        // "Bridge",
+        "Bridge",
         "DeFi",
-        // "Dex",
-        // "GameFi",
+        "Dex",
+        "GameFi",
         "Infrastructure",
-        // "Launchpad",
-        // "Name Service",
-        // "NFT Market",
+        "Launchpad",
+        "Name Service",
+        "NFT Market",
         // "Official Partners",
-        // "SocialFi",
-        // "Tools",
+        "SocialFi",
+        "Tools",
         "Wallet",
       ],
     };
