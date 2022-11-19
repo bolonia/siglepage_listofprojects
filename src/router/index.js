@@ -15,7 +15,7 @@ const routes = [
     component: Fun
   },
   {
-    path: '/categories',
+    path: '/overview',
     name: 'CategoriesPage',
     component: CategoriesPage
   }

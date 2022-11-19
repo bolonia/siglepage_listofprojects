@@ -6,7 +6,7 @@
       ecosystem</div>
     <div class="right">
       <button class="btn_fun" @click="$router.push('/fun')">Fun</button>
-      <button class="btn_submit" @click="$router.push('/categories')">Categories</button>
+      <button class="btn_submit" @click="$router.push('/overview')">Overview</button>
       <div class="social_media">
         <a target="_blank" href="https://suiecosystem.top"><img src="../assets/safari.png" alt=""/></a>
         <a target="_blank" href="https://twitter.com/SuiEcosystem"><img src="../assets/twitter.png" alt=""/></a>
