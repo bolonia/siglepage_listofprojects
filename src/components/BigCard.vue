@@ -28,7 +28,7 @@ export default {
     },
     mounted() {
       axios
-      .get(`https://suiecosystem.top/wp-json/api/get_project_by_slug_pagination/${this.dataEl.toLowerCase().replace(/ /g, "-")}/1/100`)
+      .get(process.env.VUE_APP_BASE_API_URL + `${this.dataEl.toLowerCase().replace(/ /g, "-")}/1/100`)
       .then((response) => {
         this.projects = response.data;
       })
@@ -41,7 +41,6 @@ export default {
       addItems() {
         this.count += 10;
         if (this.projects.length - this.count < 10) this.countName = this.projects.length - this.count;
-        if (this.count >= this.projects.length) console.log("dis");
       }
     }
 }
@@ -55,6 +54,7 @@ export default {
   padding-left: 8px;
   list-style: none;
   font-size: 18px;
+  cursor: pointer;
 }
 li:hover{
   transform: none;

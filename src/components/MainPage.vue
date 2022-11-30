@@ -75,7 +75,7 @@ export default {
         if (!this.stopLoad) {
           this.stopLoad = true;
           axios
-            .get(`https://suiecosystem.top/wp-json/api/get_project_by_slug_pagination/${this.selectCategory}/${this.page}/18`)
+            .get(process.env.VUE_APP_BASE_API_URL + `${this.selectCategory}/${this.page}/18`)
             .then((response) => {
               let arr = [...Array.from(this.projects), ...response.data];
               this.projects = arr;
@@ -84,9 +84,9 @@ export default {
         }
       }
     });
-
+    
     axios
-      .get(`https://suiecosystem.top/wp-json/api/get_project_by_slug_pagination/${this.selectCategory}/${this.page}/18`)
+      .get(process.env.VUE_APP_BASE_API_URL + `${this.selectCategory}/${this.page}/18`)
       .then((response) => {
         this.projects = response.data;
       });
@@ -99,7 +99,7 @@ export default {
       window.scrollTo(0, 0);
 
       axios
-        .get(`https://suiecosystem.top/wp-json/api/get_project_by_slug_pagination/${this.selectCategory}/1/18`)
+        .get(process.env.VUE_APP_BASE_API_URL + `${this.selectCategory}/1/18`)
         .then((response) => {
           this.projects = response.data;
         });
