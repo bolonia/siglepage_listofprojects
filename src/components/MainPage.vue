@@ -2,7 +2,7 @@
   <Background/>
   <div class="nav">
     <div class="h" @click="$router.push('/')">
-      <div class="blue">Sui</div>
+      <div class="blue">Shardeum</div>
       ecosystem</div>
     <div class="right">
       <button class="btn_fun" @click="$router.push('/fun')">Fun</button>
